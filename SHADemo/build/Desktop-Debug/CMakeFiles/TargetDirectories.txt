@@ -1,0 +1,9 @@
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/SHADemo.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/list_install_components.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/install.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/install/local.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/install/strip.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/SHADemo_autogen_timestamp_deps.dir
+/home/henrique/Documents/Trabalho Final Lab Prog III/SHADemo/build/Desktop-Debug/CMakeFiles/SHADemo_autogen.dir
