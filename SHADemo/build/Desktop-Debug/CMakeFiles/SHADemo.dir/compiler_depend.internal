@@ -4308,6 +4308,7 @@ CMakeFiles/SHADemo.dir/mainwindow.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QAbstractItemView
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QComboBox
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout

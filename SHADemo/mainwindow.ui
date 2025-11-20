@@ -24,11 +24,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="hash">
      <attribute name="title">
-      <string>Home</string>
+      <string>Hash</string>
      </attribute>
      <widget class="QTableWidget" name="historyTableWidget">
       <property name="geometry">
@@ -137,10 +137,179 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="detalhes">
      <attribute name="title">
       <string>Detalhes do Algoritmo</string>
      </attribute>
+     <widget class="QGroupBox" name="detailsOriginalMessageBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>291</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Mensagem original</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>291</width>
+         <height>191</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="detailsOrignalMessageLayout">
+        <item>
+         <widget class="QLabel" name="detailsOriginalLengthLabel">
+          <property name="text">
+           <string>N bytes</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="detailsOriginalTextEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="detailsHexMessageBox">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>10</y>
+        <width>281</width>
+        <height>211</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Hex</string>
+      </property>
+      <widget class="QPlainTextEdit" name="detailsEncodedHexTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>40</y>
+         <width>281</width>
+         <height>171</height>
+        </rect>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="detailsPaddingBox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>240</y>
+        <width>291</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Padding e blocos</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>291</width>
+         <height>181</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="detailsVerticalLayout">
+        <item>
+         <widget class="QLabel" name="detailsPaddedLengthLabel">
+          <property name="text">
+           <string>Tamanho após padding + blocos:</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="detailsFirstBlockHexTextEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="detailsInternalStateBox">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>240</y>
+        <width>271</width>
+        <height>201</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Estado interno</string>
+      </property>
+      <widget class="QWidget" name="verticalLayoutWidget_3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>271</width>
+         <height>181</height>
+        </rect>
+       </property>
+       <layout class="QVBoxLayout" name="detailsInternalStateLayout">
+        <item>
+         <widget class="QPlainTextEdit" name="detailsInitialHTextEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPlainTextEdit" name="detailsFinalHTextEdit">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>470</y>
+        <width>211</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="detailsFinalHashLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Hash final</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="detailsFinalHashLineEdit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>

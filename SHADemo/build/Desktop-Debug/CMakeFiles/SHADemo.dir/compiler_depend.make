@@ -4302,6 +4302,7 @@ CMakeFiles/SHADemo.dir/mainwindow.cpp.o: /home/henrique/Documents/Trabalho\ Fina
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QAbstractItemView \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QComboBox \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QHBoxLayout \
@@ -4898,6 +4899,8 @@ SHADemo_autogen/moc_predefs.h:
 /usr/lib/x86_64-linux-gnu/cmake/Qt6Core/Qt6CoreConfigVersion.cmake:
 
 /home/henrique/Documents/Trabalho\ Final\ Lab\ Prog\ III/SHADemo/historyrepository.cpp:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QAbstractItemView:
 
 CMakeFiles/3.28.3/CMakeSystem.cmake:
 
