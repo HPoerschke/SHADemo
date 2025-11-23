@@ -28,4 +28,4 @@ private:
     QDateTime m_timestamp;
 };
 
-#endif // HASHRECORD_H
+#endif

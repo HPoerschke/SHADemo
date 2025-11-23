@@ -14,8 +14,11 @@ public:
     QList<HashRecord> load() const;
     void save(const QList<HashRecord> &records) const;
 
+    static QList<HashRecord> loadFromFile(const QString &filePath);
+    static bool saveToFile(const QString &filePath, const QList<HashRecord> &records);
+
 private:
     QString m_filePath;
 };
 
-#endif // HISTORYREPOSITORY_H
+#endif

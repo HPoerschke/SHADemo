@@ -12,9 +12,19 @@ HistoryRepository::HistoryRepository(const QString &filePath)
 
 QList<HashRecord> HistoryRepository::load() const
 {
+    return HistoryRepository::loadFromFile(m_filePath);
+}
+
+void HistoryRepository::save(const QList<HashRecord> &records) const
+{
+    HistoryRepository::saveToFile(m_filePath, records);
+}
+
+QList<HashRecord> HistoryRepository::loadFromFile(const QString &filePath)
+{
     QList<HashRecord> result;
 
-    QFile file(m_filePath);
+    QFile file(filePath);
     if (!file.exists()) {
         return result;
     }
@@ -24,7 +34,6 @@ QList<HashRecord> HistoryRepository::load() const
     }
 
     QTextStream in(&file);
-    // Em Qt 6, QTextStream já usa UTF-8 por padrão para arquivos de texto
 
     while (!in.atEnd()) {
         const QString line = in.readLine().trimmed();
@@ -41,23 +50,26 @@ QList<HashRecord> HistoryRepository::load() const
     return result;
 }
 
-void HistoryRepository::save(const QList<HashRecord> &records) const
+bool HistoryRepository::saveToFile(const QString &filePath, const QList<HashRecord> &records)
 {
-    QFileInfo info(m_filePath);
+    QFileInfo info(filePath);
     QDir dir = info.dir();
     if (!dir.exists()) {
-        dir.mkpath(".");
+        if (!dir.mkpath(".")) {
+            return false;
+        }
     }
 
-    QFile file(m_filePath);
+    QFile file(filePath);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate)) {
-        return;
+        return false;
     }
 
     QTextStream out(&file);
-    // Em Qt 6, QTextStream já usa UTF-8 por padrão para arquivos de texto
 
     for (const HashRecord &rec : records) {
         out << rec.toCsvLine() << '\n';
     }
+
+    return true;
 }

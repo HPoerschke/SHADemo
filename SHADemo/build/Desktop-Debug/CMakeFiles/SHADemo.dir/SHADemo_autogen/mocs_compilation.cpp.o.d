@@ -390,6 +390,7 @@ CMakeFiles/SHADemo.dir/SHADemo_autogen/mocs_compilation.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbitmap.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QByteArray \
   /home/henrique/Documents/Trabalho\ Final\ Lab\ Prog\ III/SHADemo/build/Desktop-Debug/SHADemo_autogen/EWIEGA46WW/../../../../hashrecord.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QDateTime \

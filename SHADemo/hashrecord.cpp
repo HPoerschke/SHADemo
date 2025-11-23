@@ -11,29 +11,13 @@ HashRecord::HashRecord(const QString &input,
 {
 }
 
-const QString &HashRecord::input() const
-{
-    return m_input;
-}
-
-const QString &HashRecord::algorithm() const
-{
-    return m_algorithm;
-}
-
-const QString &HashRecord::hash() const
-{
-    return m_hash;
-}
-
-const QDateTime &HashRecord::timestamp() const
-{
-    return m_timestamp;
-}
+const QString &HashRecord::input() const { return m_input; }
+const QString &HashRecord::algorithm() const { return m_algorithm; }
+const QString &HashRecord::hash() const { return m_hash; }
+const QDateTime &HashRecord::timestamp() const { return m_timestamp; }
 
 QString HashRecord::toCsvLine() const
 {
-    // bem simples: separador ';' e troca quebras de linha por espaço
     QString safeInput = m_input;
     safeInput.replace('\n', ' ').replace('\r', ' ');
 
