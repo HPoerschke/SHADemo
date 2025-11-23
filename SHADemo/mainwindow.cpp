@@ -10,6 +10,7 @@
 #include <QHeaderView>
 #include <QAbstractItemView>
 #include <QFileDialog>
+#include <QPushButton>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -49,7 +50,7 @@ void MainWindow::setupUiBehavior()
     ui->historyTableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->historyTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    clearDetailsView("Gere um hash SHA-256 para visualizar o passo a passo em alto nível.");
+    clearDetailsView("Gere um hash SHA-256 ou SHA-1 para visualizar o passo a passo em alto nível.");
 }
 
 void MainWindow::loadHistory()
@@ -199,6 +200,7 @@ void MainWindow::fillSha256Details(const QString &input, const QString &hash)
 
     if (ui->detailsInitialHTextEdit) {
         QString initialH;
+        initialH += "SHA-256 - valores iniciais (H0..H7):\n";
         initialH += "H0 = 6a09e667\n";
         initialH += "H1 = bb67ae85\n";
         initialH += "H2 = 3c6ef372\n";
@@ -215,6 +217,7 @@ void MainWindow::fillSha256Details(const QString &input, const QString &hash)
         QString finalH;
 
         if (digest.size() == 32) {
+            finalH += "SHA-256 - valores finais (H0..H7):\n";
             for (int i = 0; i < 8; ++i) {
                 quint32 word = 0;
                 word |= (static_cast<unsigned char>(digest.at(4 * i    )) << 24);
@@ -227,7 +230,100 @@ void MainWindow::fillSha256Details(const QString &input, const QString &hash)
                               .arg(word, 8, 16, QLatin1Char('0'));
             }
         } else {
-            finalH = "Não foi possível decompor o hash em H0..H7.";
+            finalH = "Não foi possível decompor o hash em H0..H7 (tamanho inesperado de digest).";
+        }
+
+        ui->detailsFinalHTextEdit->setPlainText(finalH);
+    }
+
+    if (ui->detailsFinalHashLineEdit) {
+        ui->detailsFinalHashLineEdit->setText(hash);
+    }
+}
+
+void MainWindow::fillSha1Details(const QString &input, const QString &hash)
+{
+    QByteArray data = input.toUtf8();
+    const int originalBytes = data.size();
+    const quint64 originalBits =
+        static_cast<quint64>(originalBytes) * 8ull;
+
+    if (ui->detailsOriginalTextEdit)
+        ui->detailsOriginalTextEdit->setPlainText(input);
+
+    if (ui->detailsOriginalLengthLabel) {
+        ui->detailsOriginalLengthLabel->setText(
+            QString("%1 bytes (%2 bits)")
+                .arg(originalBytes)
+                .arg(originalBits));
+    }
+
+    if (ui->detailsEncodedHexTextEdit) {
+        ui->detailsEncodedHexTextEdit->setPlainText(
+            bytesToHexGrouped(data, 4, 16));
+    }
+
+    data.append(char(0x80));
+
+    while ( (static_cast<quint64>(data.size()) * 8ull) % 512ull != 448ull ) {
+        data.append(char(0x00));
+    }
+
+    quint64 bitLen = originalBits;
+    for (int i = 7; i >= 0; --i) {
+        char b = static_cast<char>((bitLen >> (i * 8)) & 0xFFu);
+        data.append(b);
+    }
+
+    const quint64 paddedBits =
+        static_cast<quint64>(data.size()) * 8ull;
+    const quint64 blocks = paddedBits / 512ull;
+
+    if (ui->detailsPaddedLengthLabel) {
+        ui->detailsPaddedLengthLabel->setText(
+            QString("Tamanho após padding: %1 bytes (%2 bits), %3 bloco(s) de 512 bits")
+                .arg(data.size())
+                .arg(paddedBits)
+                .arg(blocks));
+    }
+
+    if (ui->detailsFirstBlockHexTextEdit) {
+        int bytesToShow = qMin(64, data.size());
+        QByteArray firstBlock = data.left(bytesToShow);
+        ui->detailsFirstBlockHexTextEdit->setPlainText(
+            bytesToHexGrouped(firstBlock, 4, 16));
+    }
+
+    if (ui->detailsInitialHTextEdit) {
+        QString initialH;
+        initialH += "SHA-1 - valores iniciais (H0..H4):\n";
+        initialH += "H0 = 67452301\n";
+        initialH += "H1 = efcdab89\n";
+        initialH += "H2 = 98badcfe\n";
+        initialH += "H3 = 10325476\n";
+        initialH += "H4 = c3d2e1f0\n";
+        ui->detailsInitialHTextEdit->setPlainText(initialH);
+    }
+
+    if (ui->detailsFinalHTextEdit) {
+        QByteArray digest = QByteArray::fromHex(hash.toLatin1());
+        QString finalH;
+
+        if (digest.size() == 20) {
+            finalH += "SHA-1 - valores finais (H0..H4):\n";
+            for (int i = 0; i < 5; ++i) {
+                quint32 word = 0;
+                word |= (static_cast<unsigned char>(digest.at(4 * i    )) << 24);
+                word |= (static_cast<unsigned char>(digest.at(4 * i + 1)) << 16);
+                word |= (static_cast<unsigned char>(digest.at(4 * i + 2)) << 8);
+                word |= (static_cast<unsigned char>(digest.at(4 * i + 3)));
+
+                finalH += QString("H%1 = %2\n")
+                              .arg(i)
+                              .arg(word, 8, 16, QLatin1Char('0'));
+            }
+        } else {
+            finalH = "Não foi possível decompor o hash em H0..H4 (tamanho inesperado de digest).";
         }
 
         ui->detailsFinalHTextEdit->setPlainText(finalH);
@@ -244,10 +340,12 @@ void MainWindow::updateDetailsView(const QString &input,
 {
     if (algorithm == "SHA-256") {
         fillSha256Details(input, hash);
+    } else if (algorithm == "SHA-1") {
+        fillSha1Details(input, hash);
     } else {
         clearDetailsView(
-            "Detalhamento passo a passo está implementado apenas para SHA-256.\n"
-            "Selecione o algoritmo SHA-256 para visualizar o fluxo do algoritmo.");
+            "Detalhamento passo a passo está implementado para SHA-256 e SHA-1.\n"
+            "Selecione um desses algoritmos para visualizar o fluxo do algoritmo.");
     }
 }
 

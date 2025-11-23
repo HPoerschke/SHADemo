@@ -49,6 +49,7 @@ private:
                               int lineBreakEvery = 16) const;
 
     void fillSha256Details(const QString &input, const QString &hash);
+    void fillSha1Details(const QString &input, const QString &hash);
     void clearDetailsView(const QString &message = QString());
 };
 
