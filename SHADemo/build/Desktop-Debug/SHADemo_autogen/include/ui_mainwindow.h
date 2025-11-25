@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
@@ -56,6 +57,8 @@ public:
     QLineEdit *hashOutputLineEdit;
     QTableWidget *historyTableWidget;
     QWidget *detalhes;
+    QWidget *gridLayoutWidget;
+    QGridLayout *detailsPageLayout;
     QGroupBox *detailsOriginalMessageBox;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *detailsOrignalMessageLayout;
@@ -63,16 +66,16 @@ public:
     QPlainTextEdit *detailsOriginalTextEdit;
     QGroupBox *detailsHexMessageBox;
     QPlainTextEdit *detailsEncodedHexTextEdit;
-    QGroupBox *detailsPaddingBox;
-    QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *detailsVerticalLayout;
-    QLabel *detailsPaddedLengthLabel;
-    QPlainTextEdit *detailsFirstBlockHexTextEdit;
     QGroupBox *detailsInternalStateBox;
     QWidget *verticalLayoutWidget_3;
     QVBoxLayout *detailsInternalStateLayout;
     QPlainTextEdit *detailsInitialHTextEdit;
     QPlainTextEdit *detailsFinalHTextEdit;
+    QGroupBox *detailsPaddingBox;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *detailsVerticalLayout;
+    QLabel *detailsPaddedLengthLabel;
+    QPlainTextEdit *detailsFirstBlockHexTextEdit;
     QWidget *horizontalLayoutWidget_4;
     QHBoxLayout *detailsFinalHashLayout;
     QLabel *label;
@@ -85,24 +88,25 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(1601, 667);
+        MainWindow->resize(1074, 765);
         MainWindow->setMinimumSize(QSize(800, 600));
         MainWindow->setMaximumSize(QSize(1920, 1080));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         selectTabWidget = new QTabWidget(centralwidget);
         selectTabWidget->setObjectName("selectTabWidget");
-        selectTabWidget->setGeometry(QRect(0, 0, 800, 600));
+        selectTabWidget->setGeometry(QRect(0, 0, 831, 600));
         selectTabWidget->setMinimumSize(QSize(800, 600));
         selectTabWidget->setMaximumSize(QSize(1920, 1080));
         hash = new QWidget();
         hash->setObjectName("hash");
         verticalLayoutWidget_5 = new QWidget(hash);
         verticalLayoutWidget_5->setObjectName("verticalLayoutWidget_5");
-        verticalLayoutWidget_5->setGeometry(QRect(0, 0, 651, 381));
+        verticalLayoutWidget_5->setGeometry(QRect(0, 0, 811, 581));
         hashPageLayout = new QVBoxLayout(verticalLayoutWidget_5);
         hashPageLayout->setObjectName("hashPageLayout");
-        hashPageLayout->setContentsMargins(0, 0, 0, 0);
+        hashPageLayout->setSizeConstraint(QLayout::SetFixedSize);
+        hashPageLayout->setContentsMargins(1, 1, 1, 1);
         hashOptions = new QVBoxLayout();
         hashOptions->setObjectName("hashOptions");
         buttonsAndAlgorithmLayout = new QHBoxLayout();
@@ -193,9 +197,16 @@ public:
         selectTabWidget->addTab(hash, QString());
         detalhes = new QWidget();
         detalhes->setObjectName("detalhes");
-        detailsOriginalMessageBox = new QGroupBox(detalhes);
+        gridLayoutWidget = new QWidget(detalhes);
+        gridLayoutWidget->setObjectName("gridLayoutWidget");
+        gridLayoutWidget->setGeometry(QRect(0, 0, 821, 602));
+        detailsPageLayout = new QGridLayout(gridLayoutWidget);
+        detailsPageLayout->setObjectName("detailsPageLayout");
+        detailsPageLayout->setContentsMargins(1, 1, 1, 1);
+        detailsOriginalMessageBox = new QGroupBox(gridLayoutWidget);
         detailsOriginalMessageBox->setObjectName("detailsOriginalMessageBox");
-        detailsOriginalMessageBox->setGeometry(QRect(20, 10, 291, 211));
+        detailsOriginalMessageBox->setMinimumSize(QSize(800, 600));
+        detailsOriginalMessageBox->setMaximumSize(QSize(1920, 1080));
         verticalLayoutWidget = new QWidget(detailsOriginalMessageBox);
         verticalLayoutWidget->setObjectName("verticalLayoutWidget");
         verticalLayoutWidget->setGeometry(QRect(0, 20, 291, 191));
@@ -213,16 +224,37 @@ public:
 
         detailsOrignalMessageLayout->addWidget(detailsOriginalTextEdit);
 
-        detailsHexMessageBox = new QGroupBox(detalhes);
+        detailsHexMessageBox = new QGroupBox(detailsOriginalMessageBox);
         detailsHexMessageBox->setObjectName("detailsHexMessageBox");
-        detailsHexMessageBox->setGeometry(QRect(320, 10, 281, 211));
+        detailsHexMessageBox->setGeometry(QRect(490, 0, 281, 201));
         detailsEncodedHexTextEdit = new QPlainTextEdit(detailsHexMessageBox);
         detailsEncodedHexTextEdit->setObjectName("detailsEncodedHexTextEdit");
-        detailsEncodedHexTextEdit->setGeometry(QRect(0, 40, 281, 171));
+        detailsEncodedHexTextEdit->setGeometry(QRect(0, 20, 281, 181));
         detailsEncodedHexTextEdit->setReadOnly(true);
-        detailsPaddingBox = new QGroupBox(detalhes);
+        detailsInternalStateBox = new QGroupBox(detailsOriginalMessageBox);
+        detailsInternalStateBox->setObjectName("detailsInternalStateBox");
+        detailsInternalStateBox->setGeometry(QRect(490, 220, 281, 201));
+        verticalLayoutWidget_3 = new QWidget(detailsInternalStateBox);
+        verticalLayoutWidget_3->setObjectName("verticalLayoutWidget_3");
+        verticalLayoutWidget_3->setGeometry(QRect(0, 20, 281, 181));
+        detailsInternalStateLayout = new QVBoxLayout(verticalLayoutWidget_3);
+        detailsInternalStateLayout->setObjectName("detailsInternalStateLayout");
+        detailsInternalStateLayout->setContentsMargins(0, 0, 0, 0);
+        detailsInitialHTextEdit = new QPlainTextEdit(verticalLayoutWidget_3);
+        detailsInitialHTextEdit->setObjectName("detailsInitialHTextEdit");
+        detailsInitialHTextEdit->setReadOnly(true);
+
+        detailsInternalStateLayout->addWidget(detailsInitialHTextEdit);
+
+        detailsFinalHTextEdit = new QPlainTextEdit(verticalLayoutWidget_3);
+        detailsFinalHTextEdit->setObjectName("detailsFinalHTextEdit");
+        detailsFinalHTextEdit->setReadOnly(true);
+
+        detailsInternalStateLayout->addWidget(detailsFinalHTextEdit);
+
+        detailsPaddingBox = new QGroupBox(detailsOriginalMessageBox);
         detailsPaddingBox->setObjectName("detailsPaddingBox");
-        detailsPaddingBox->setGeometry(QRect(20, 240, 291, 201));
+        detailsPaddingBox->setGeometry(QRect(0, 220, 291, 201));
         verticalLayoutWidget_2 = new QWidget(detailsPaddingBox);
         verticalLayoutWidget_2->setObjectName("verticalLayoutWidget_2");
         verticalLayoutWidget_2->setGeometry(QRect(0, 20, 291, 181));
@@ -240,30 +272,9 @@ public:
 
         detailsVerticalLayout->addWidget(detailsFirstBlockHexTextEdit);
 
-        detailsInternalStateBox = new QGroupBox(detalhes);
-        detailsInternalStateBox->setObjectName("detailsInternalStateBox");
-        detailsInternalStateBox->setGeometry(QRect(320, 240, 271, 201));
-        verticalLayoutWidget_3 = new QWidget(detailsInternalStateBox);
-        verticalLayoutWidget_3->setObjectName("verticalLayoutWidget_3");
-        verticalLayoutWidget_3->setGeometry(QRect(0, 20, 271, 181));
-        detailsInternalStateLayout = new QVBoxLayout(verticalLayoutWidget_3);
-        detailsInternalStateLayout->setObjectName("detailsInternalStateLayout");
-        detailsInternalStateLayout->setContentsMargins(0, 0, 0, 0);
-        detailsInitialHTextEdit = new QPlainTextEdit(verticalLayoutWidget_3);
-        detailsInitialHTextEdit->setObjectName("detailsInitialHTextEdit");
-        detailsInitialHTextEdit->setReadOnly(true);
-
-        detailsInternalStateLayout->addWidget(detailsInitialHTextEdit);
-
-        detailsFinalHTextEdit = new QPlainTextEdit(verticalLayoutWidget_3);
-        detailsFinalHTextEdit->setObjectName("detailsFinalHTextEdit");
-        detailsFinalHTextEdit->setReadOnly(true);
-
-        detailsInternalStateLayout->addWidget(detailsFinalHTextEdit);
-
-        horizontalLayoutWidget_4 = new QWidget(detalhes);
+        horizontalLayoutWidget_4 = new QWidget(detailsOriginalMessageBox);
         horizontalLayoutWidget_4->setObjectName("horizontalLayoutWidget_4");
-        horizontalLayoutWidget_4->setGeometry(QRect(20, 470, 751, 31));
+        horizontalLayoutWidget_4->setGeometry(QRect(0, 440, 771, 31));
         detailsFinalHashLayout = new QHBoxLayout(horizontalLayoutWidget_4);
         detailsFinalHashLayout->setObjectName("detailsFinalHashLayout");
         detailsFinalHashLayout->setContentsMargins(0, 0, 0, 0);
@@ -278,11 +289,14 @@ public:
 
         detailsFinalHashLayout->addWidget(detailsFinalHashLineEdit);
 
+
+        detailsPageLayout->addWidget(detailsOriginalMessageBox, 0, 0, 1, 1);
+
         selectTabWidget->addTab(detalhes, QString());
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
-        menubar->setGeometry(QRect(0, 0, 1601, 22));
+        menubar->setGeometry(QRect(0, 0, 1074, 22));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
@@ -293,7 +307,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        selectTabWidget->setCurrentIndex(0);
+        selectTabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -313,9 +327,9 @@ public:
         detailsOriginalMessageBox->setTitle(QCoreApplication::translate("MainWindow", "Mensagem original", nullptr));
         detailsOriginalLengthLabel->setText(QCoreApplication::translate("MainWindow", "N bytes", nullptr));
         detailsHexMessageBox->setTitle(QCoreApplication::translate("MainWindow", "Hex", nullptr));
+        detailsInternalStateBox->setTitle(QCoreApplication::translate("MainWindow", "Estado interno", nullptr));
         detailsPaddingBox->setTitle(QCoreApplication::translate("MainWindow", "Padding e blocos", nullptr));
         detailsPaddedLengthLabel->setText(QCoreApplication::translate("MainWindow", "Tamanho ap\303\263s padding + blocos:", nullptr));
-        detailsInternalStateBox->setTitle(QCoreApplication::translate("MainWindow", "Estado interno", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Hash final", nullptr));
         selectTabWidget->setTabText(selectTabWidget->indexOf(detalhes), QCoreApplication::translate("MainWindow", "Detalhes do Algoritmo", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
