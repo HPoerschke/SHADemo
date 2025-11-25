@@ -480,6 +480,8 @@ CMakeFiles/SHADemo.dir/mainwindow.cpp.o: \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTableWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtablewidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtableview.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QToolBar \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtoolbar.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QCryptographicHash \
