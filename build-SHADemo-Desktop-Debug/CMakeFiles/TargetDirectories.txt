@@ -1,0 +1,8 @@
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/SHADemo.dir
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/edit_cache.dir
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/rebuild_cache.dir
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/list_install_components.dir
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/install.dir
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/install/local.dir
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/install/strip.dir
+/home/179791@upf.br/Documentos/trabalho_final/SHADemo/build-SHADemo-Desktop-Debug/CMakeFiles/SHADemo_autogen.dir
